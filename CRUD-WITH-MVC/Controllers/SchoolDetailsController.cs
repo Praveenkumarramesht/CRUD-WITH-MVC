@@ -77,16 +77,18 @@ namespace CRUD_WITH_MVC.Controllers
         // GET: SchoolDetailsController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var num = obj.FindSchoolDetailsByIdSP(id);
+            return View("Delete",num);
         }
 
         // POST: SchoolDetailsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Deletebynum(int Id)
         {
             try
             {
+                obj.DeleteSchoolDetailsByIdSP(Id);
                 return RedirectToAction(nameof(Index));
             }
             catch
