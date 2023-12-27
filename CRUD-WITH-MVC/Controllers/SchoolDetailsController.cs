@@ -5,15 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccessLayer;
-
+using Microsoft.Extensions.Configuration;
 namespace CRUD_WITH_MVC.Controllers
 {
     public class SchoolDetailsController : Controller
     {
         public readonly ISchoolDetailsRepository obj;
-        public SchoolDetailsController()
+        public readonly string ConnectionString;
+        public SchoolDetailsController(ISchoolDetailsRepository Result,IConfiguration result)
         {
-            obj = new SchoolDetailsRepository();
+            /*obj = new SchoolDetailsRepository();*/
+             obj= Result;
+            ConnectionString = result.GetConnectionString("DbConnection");
         }
         // GET: SchoolDetailsController
         public ActionResult Index()

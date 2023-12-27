@@ -3,18 +3,24 @@ using Dapper;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
 
 namespace DataAccessLayer
 {
     public class SchoolDetailsRepository : ISchoolDetailsRepository
     {
+        public string connectionString;
+        public SchoolDetailsRepository(IConfiguration configuration)
+        {
+            connectionString = configuration.GetConnectionString("DbConnection");
+        }
         public SchoolDetailss InsertSP(SchoolDetailss SchoolDetail)
         {
 
             try
             {
-                var connectionString = "Data source=DESKTOP-1U0BM0H\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
-
+               /* var connectionString = "Data source=DESKTOP-1U0BM0H\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
+*/
                 var con = new SqlConnection(connectionString);
                 con.Open();
                 var insertQuery = $"exec SchoolDetailsInsert '{SchoolDetail.SchoolName}', '{SchoolDetail.Address}', '{SchoolDetail.StartedDate}', {SchoolDetail.PhoneNumber}, '{SchoolDetail.Email_id}'";
@@ -37,8 +43,8 @@ namespace DataAccessLayer
         {
             try
             {
-                var connectionString = "Data source=DESKTOP-1U0BM0H\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
-
+                /*var connectionString = "Data source=DESKTOP-1U0BM0H\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
+*/
                 var con = new SqlConnection(connectionString);
                 con.Open();
                 var selectQuery = $"exec SchoolDetailsRead";
@@ -62,8 +68,8 @@ namespace DataAccessLayer
         {
             try
             {
-                var connectionString = "Data source=DESKTOP-1U0BM0H\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
-
+               /* var connectionString = "Data source=DESKTOP-1U0BM0H\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
+*/
                 var con = new SqlConnection(connectionString);
                 con.Open();
                 var selectQuery = $"exec FindSchoolDetailsByNumber {Id}";
@@ -86,8 +92,8 @@ namespace DataAccessLayer
         {
             try
             {
-                var connectionString = "Data source=DESKTOP-1U0BM0H\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
-
+                /*var connectionString = "Data source=DESKTOP-1U0BM0H\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
+*/
                 var con = new SqlConnection(connectionString);
                 con.Open();
                 var deleteQuery = $"exec SchoolDetailstDelete {Id}";
@@ -111,8 +117,8 @@ namespace DataAccessLayer
 
             try
             {
-                var connectionString = "Data source=DESKTOP-1U0BM0H\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
-
+                /*var connectionString = "Data source=DESKTOP-1U0BM0H\\SQLEXPRESS;initial catalog=batch7;user id=sa;password=Anaiyaan@123;";
+*/
                 var con = new SqlConnection(connectionString);
                 con.Open();
                 var updateQuery = $"exec SchoolDetailsUpdate {Id},'{Sch.SchoolName}', '{Sch.Address}', '{Sch.StartedDate.ToString("MM/dd/yyyy")}', {Sch.PhoneNumber},'{Sch.Email_id}'";
