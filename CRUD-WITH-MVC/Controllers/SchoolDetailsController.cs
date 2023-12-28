@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataAccessLayer;
 using Microsoft.Extensions.Configuration;
+
 namespace CRUD_WITH_MVC.Controllers
 {
     public class SchoolDetailsController : Controller
@@ -87,11 +88,11 @@ namespace CRUD_WITH_MVC.Controllers
         // POST: SchoolDetailsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Deletebynum(int Id)
+        public ActionResult Deletebynum(int id)
         {
             try
             {
-                obj.DeleteSchoolDetailsByIdSP(Id);
+                obj.DeleteSchoolDetailsByIdSP(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -15,7 +15,7 @@ namespace DataAccessLayer
         [StringLength(50, ErrorMessage = "please do not enter values over 50 characters")]
         public string SchoolName { get; set; }
 
-        [Display(Name = "school Address" )]
+        [Display(Name = "School Address" )]
         [Required(ErrorMessage = "Please enter your school Address"), MaxLength(100)]
         [StringLength(50, ErrorMessage = "please do not enter values over 100 characters")]
         public string Address { get; set; }
@@ -23,8 +23,8 @@ namespace DataAccessLayer
         [Required(ErrorMessage = "Please enter your StartedDate")]
         public DateTime StartedDate { get; set; }
 
-        [Required(ErrorMessage = "Please enter your PhoneNumber"), MaxLength(10)]
-        [StringLength(50, ErrorMessage = "please do not enter values over 10 characters")]
+        [Required(ErrorMessage = "Please enter your PhoneNumber")]
+        [RegularExpression(@"^(\d{10})$", ErrorMessage = "Wrong PhoneNumber")]
         public long PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Please enter your Email_id"), MaxLength(20)]
