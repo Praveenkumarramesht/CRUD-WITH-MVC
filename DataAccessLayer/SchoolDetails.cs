@@ -17,7 +17,7 @@ namespace DataAccessLayer
 
         [Display(Name = "School Address" )]
         [Required(ErrorMessage = "Please enter your school Address"), MaxLength(100)]
-        [StringLength(50, ErrorMessage = "please do not enter values over 100 characters")]
+        [StringLength(50, ErrorMessage = "please do not enter values over 100 characters",MinimumLength =1)]
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Please enter your StartedDate")]

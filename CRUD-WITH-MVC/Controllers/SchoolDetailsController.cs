@@ -51,7 +51,7 @@ namespace CRUD_WITH_MVC.Controllers
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
 
@@ -74,7 +74,7 @@ namespace CRUD_WITH_MVC.Controllers
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
 
@@ -97,7 +97,7 @@ namespace CRUD_WITH_MVC.Controllers
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
     }
